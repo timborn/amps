@@ -1,4 +1,7 @@
 #!/bin/sh
+# barebones install for AMPS 5.2 on CentOS 7
+## Copyright (c) 2012-2017 60East Technologies Inc., All Rights Reserved.
+
 INSTALLPATH=/opt/amps
 RUNPATH=/var/run/amps
 CONFIGPATH=/opt/etc/amps
