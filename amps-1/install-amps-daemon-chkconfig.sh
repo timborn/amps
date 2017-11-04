@@ -2,6 +2,7 @@
 # barebones install for AMPS 5.2 on CentOS 7
 ## Copyright (c) 2012-2017 60East Technologies Inc., All Rights Reserved.
 
+AMPS=AMPS-5.2.0.70-Release-Linux
 INSTALLPATH=/opt/amps
 RUNPATH=/var/run/amps
 CONFIGPATH=/opt/etc/amps
@@ -15,13 +16,13 @@ mkdir -p $RUNPATH
 mkdir -p $CONFIGPATH
 
 # Copy the bin and lib directories to the run directory.
-cp -r bin $INSTALLPATH/.
-cp -r lib $INSTALLPATH/.
+cp -r $AMPS/bin $INSTALLPATH/.
+cp -r $AMPS/lib $INSTALLPATH/.
 
 echo "Installed AMPS binaries to $INSTALLPATH"
 
 echo "Setting up SYSV style service"
-cp -f bin/amps-init-script-rhat /etc/init.d/amps
+cp -f $AMPS/bin/amps-init-script-rhat /etc/init.d/amps
 ERROR=$?
 if [ ! -x /etc/init.d/amps ]; then
    echo "Installation failed: $ERROR."
