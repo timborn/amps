@@ -1,0 +1,17 @@
+# AMPS support uses this to test every release
+FROM ubuntu
+WORKDIR /app
+ADD . /app
+
+RUN ./install-amps-daemon-ubuntu.sh
+RUN cp AMPS-configs/config.xml /opt/etc/amps/config.xml
+
+# expose json tcp port
+EXPOSE 9007
+# expose admin port
+EXPOSE 8085
+ 
+# CMD ["bash"]
+# do not run as a daemon in Docker -- it returns and Docker things the 'app' is finished
+# CMD [ "service", "amps", "start" ]
+CMD [ "/opt/amps/bin/ampServer", "/opt/etc/amps/config.xml" ]
