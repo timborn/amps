@@ -3,7 +3,11 @@ FROM ubuntu
 WORKDIR /app
 ADD . /app
 
+# When running AMPS in Docker you do NOT want to use a daemon
+# otherwise Docker thinks the 'app' has finished because it returns so quickly.
+# Run AMPS in the foreground.
 RUN ./install-amps-daemon-ubuntu.sh
+# RUN mkdir -p /opt/etc/amps
 RUN cp AMPS-configs/config.xml /opt/etc/amps/config.xml
 
 # expose json tcp port
