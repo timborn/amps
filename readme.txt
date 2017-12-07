@@ -26,3 +26,10 @@ installed F3 to test SD cards
 https://github.com/AltraMayor/f3
 brew install f3
 
+
+Thu Dec 28 13:39:10 MST 2017
+----------------------------
+docker-3 is kafka running in docker
+
+The videos became too large for github, so now hosted on lima.
+The rest of the repo is still on github.
