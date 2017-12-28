@@ -1,0 +1,60 @@
+Thu Dec 28 15:00:16 MST 2017
+----------------------------
+https://docs.docker.com/get-started/part3/
+
+DOCKER SERVICES
+
+A "service" is part of an application.
+A "service" is a single coherent piece of functionality, implemented as an "container".
+A "container" is the running instance of an "image".
+An "image" is the description of the code+libs+dependencies.
+A "service" may include many workers in parallel -- multiple containers all running the same image.
+This collection of containers is referred to as a "swarm".
+
+
+SERVICES ARE DESCRIBED IN docker-compose.yml FILE
+
+BREAKDOWN OF THE FILE
+1. replicas indicates how many containers to start up
+2. restart_policy causes failed workers to be restarted automatically
+3. port mapping from container to (in this case) virtual network
+4. network indicates a LOAD BALANCER in front of all the containers
+   NB port 80 on the container is "magically" mapped to each container in turn
+
+
+STARTING
+--------
+
+docker swarm init   # you need to tell docker you will be managing a swarm
+
+docker stack deploy -c docker-compose.yml getstartedlab
+
+OBSERVE THE CONTAINERS
+----------------------
+
+docker service ls
+
+docker service ps getstartedlab_web
+
+docker container ls
+
+TEST LOAD BALANCER
+------------------
+
+curl http://localhost  # repeat N times until the UUID wraps around, showing the load balancer working
+
+CHANGE THE NUMBER OF CONTAINERS IN SWARM
+----------------------------------------
+# edit *yml, change number of replicas
+
+docker stack deploy -c docker-compose.yml getstartedlab
+
+docker container ls  # see number of containers change; UUIDs change as well
+
+curl http://localhost  # repeat N times until the UUID wraps around, showing the load balancer working
+
+STOPPING
+--------
+docker stack rm getstartedlab
+
+docker swarm leave --force
