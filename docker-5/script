@@ -1,0 +1,20 @@
+# https://blog.sixeyed.com/relay-iis-log-entries-to-read-them-in-docker/
+docker build -t iis-with-log-relay .
+$id = docker run -d -p 80:80 iis-with-log-relay 
+
+# should see IIS logfile
+docker logs $id
+
+# generate some load on our web service
+$ip = docker inspect --format '{{ .NetworkSettings.Networks.nat.IPAddress }}' $id
+
+for ($i=0; $i -lt 10; $i++) { iwr "http://$ip" | Out-Null } 
+
+# should see IIS logfile
+docker logs $id
+
+# flush the output buffer manually
+docker exec $id netsh http flush logbuffer
+
+# should see IIS logfile
+docker logs $id

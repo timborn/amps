@@ -1,0 +1,7 @@
+Containers are fast?  Just how fast is 'fast'?
+
+Experiment: 
+
+Start a container (Ubuntu), which starts the application (shell).
+The application runs, and the container is destroyed.
+

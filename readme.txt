@@ -33,3 +33,11 @@ docker-3 is kafka running in docker
 
 The videos became too large for github, so now hosted on lima.
 The rest of the repo is still on github.
+
+Thu Jan 11 10:19:31 CST 2018
+----------------------------
+docker-4 is using docker to create a development environment
+- IntelliJ
+- mounted volumes
+
+docker-5 is a sample of running MSWin app (vanilla IIS in this case)
