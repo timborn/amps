@@ -1,0 +1,44 @@
+# how to install Docker on WinSrv2016 (in a VirtualBox, on a mac)
+# this seems to assume you are running an admin version of powershell
+
+# https://docs.docker.com/engine/installation/windows/docker-ee/#optional-make-sure-you-have-all-required-updates
+
+# On an online machine, download the zip file.
+invoke-webrequest -UseBasicparsing -Outfile docker-17.06.2-ee-6.zip https://download.docker.com/components/engine/windows-server/17.06/docker-17.06.2-ee-6.zip
+
+
+# Extract the archive.
+Expand-Archive docker-17.06.2-ee-6.zip -DestinationPath $Env:ProgramFiles
+
+# Clean up the zip file.
+Remove-Item -Force docker-17.06.2-ee-6.zip
+
+# Install Docker. This will require rebooting.
+$null = Install-WindowsFeature containers
+
+# Add Docker to the path for the current session.
+$env:path += ";$env:ProgramFiles\docker"
+
+# Optionally, modify PATH to persist across sessions.
+$newPath = "$env:ProgramFiles\docker;" +
+[Environment]::GetEnvironmentVariable("PATH",
+[EnvironmentVariableTarget]::Machine)
+
+[Environment]::SetEnvironmentVariable("PATH", $newPath,
+[EnvironmentVariableTarget]::Machine)
+
+# Register the Docker daemon as a service.
+dockerd --register-service
+
+# Start the Docker service.
+Start-Service docker
+Test your Docker EE installation by running the hello-world container.
+
+docker container run hello-world:nanoserver
+
+
+# Make sure you have all required updates
+# Some advanced Docker features (like Swarm) require that Windows is 
+# updated to include the fixes in KB4015217 (or a later cumulative patch).
+
+sconfig

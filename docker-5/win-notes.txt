@@ -1,0 +1,12 @@
+# ctrl-alt-del is left-cmd+fn+del
+
+# Get an Admin Powershell command prompt (from cmd)
+powershell -Command "Start-Process PowerShell –Verb RunAs"
+
+# Windows Update - how?
+
+# install Docker engine as a service
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+Install-Module -Name DockerMsftProvider -Force
+Install-Package -Name docker -ProviderName DockerMsftProvider -Force
+Restart-Computer -Force
