@@ -1,0 +1,22 @@
+This is a demo of Docker for MSWindows apps.
+
+In this demo we will build a Docker image of IIS, 
+the MSWin web service.
+
+Steps
+1. build a docker image from a Dockerfile (recipe)
+2. run the container (image)
+   N.B. IIS does not behave, by default.  
+   Some folks have figured out how to get IIS to 
+   handle logfiles better (See 12 Factors).  
+   I've applied those changes to this image 
+   (see the Dockerfile for details).
+   We _expect_ we should be able to use "docker logs' 
+   command to see the lofile.
+3. check the logile
+4. generate a load on our webserver
+5. check the logile
+6. manually flush the logfile
+7. check the logile
+
+
