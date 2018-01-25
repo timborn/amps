@@ -41,3 +41,7 @@ docker-4 is using docker to create a development environment
 - mounted volumes
 
 docker-5 is a sample of running MSWin app (vanilla IIS in this case)
+
+Thu Jan 25 16:40:04 CST 2018
+----------------------------
+docker-6 - can I run a developer desktop in Docker?
