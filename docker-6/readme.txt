@@ -15,4 +15,18 @@ a service
 - users $HOME can be mounted for persistance (how?)
 - dev environments get nuked after being up for 5 days
 
-https://github.com/ConSol/docker-headless-vnc-container
+Sun Jan 28 08:53:59 CST 2018
+----------------------------
+Start with this base:
+# git clone https://github.com/ConSol/docker-headless-vnc-container.git
+I decided to clone this to my github instead
+
+Mon Jan 29 07:04:57 CST 2018
+----------------------------
+installed
+git
+enabled logging in docker
+disabled Chrome
+updated firefox
+installed Intellij
+added HOME customization

@@ -1,0 +1,6 @@
+[submodule "docker-6/docker-6/docker-headless-vnc-container"]
+	path = docker-6/docker-6/docker-headless-vnc-container
+	url = git@github.com:timborn/docker-headless-vnc-container.git
+[submodule "docker-6/docker-headless-vnc-container"]
+	path = docker-6/docker-headless-vnc-container
+	url = git@github.com:timborn/docker-headless-vnc-container.git
